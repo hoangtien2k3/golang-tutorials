@@ -15,4 +15,13 @@ func main() {
 	}
 
 	fmt.Printf("value of a is : %d\n", a)
+
+	fmt.Printf("========================\n")
+
+	// if statement, condition {code}
+	if a := 100; a > 100 {
+		fmt.Printf("a is greater than 100: a = %d\n", a)
+	} else {
+		fmt.Printf("a is less than 100: a = %d\n", a)
+	}
 }
