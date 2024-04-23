@@ -1,3 +1,5 @@
+![](golang_icon.png)
+
 # Golang Tutorials
 Golang Tutorials. Learn Golang from Scratch with simple examples.
 
