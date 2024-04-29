@@ -19,17 +19,9 @@ type vehicle interface {
 	accelerate()
 }
 
-func foo(v vehicle) {
-	fmt.Println(v)
-}
-
 type car struct {
 	model string
 	color string
-}
-
-func (c car) accelerate() {
-	fmt.Println("Accelrating?")
 }
 
 type toyota struct {
@@ -38,8 +30,16 @@ type toyota struct {
 	speed int
 }
 
+func (c car) accelerate() {
+	fmt.Println("Accelrating?")
+}
+
 func (t toyota) accelerate() {
 	fmt.Println("I am toyota, I accelerate fast?")
+}
+
+func foo(v vehicle) {
+	fmt.Println(v)
 }
 
 func main() {

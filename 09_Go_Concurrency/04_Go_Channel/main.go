@@ -5,29 +5,22 @@ import (
 	"time"
 )
 
-// Channel là một tính năng mà qua đó cho phép các goroutines trao đổi dữ liệu với nhau.
-// goroutine khi truyền dữ liệu vào channel thì phải có một goroutine khác lấy dữ liệu ra hoặc ngược lại
-// nếu không các goroutine sẽ đi vào trạng thái “chờ”.
+// Channels are a typed conduit through which you can send and receive values with the channel operator: '<-'
 /*
 syntax:
-	ch := make(chan int)
-
-	=> chúng được sử dụng với operator '<-'
-	ch <- v    // Send v to channel ch.
-	v := <-ch  // Receive from ch, and
+	ch <- v    	// Send v to channel ch.
+	v := <-ch  	// Receive from ch, and
            		// assign value to v.
+
+syntax: create channels
+	ch := make(chan int)
 */
-
-/*
-Chỉ cho phép channel chỉ được phép truyền dữ liệu vào:
-
-		send(c chan <- int)
-
-Chỉ cho phép channel chỉ được phép đọc dữ liệu:
-
-		receive(c <- chan int)
-
-*/
+// Like maps and slices, channels must be created before use:
+// ch := make(chan int)
+// By default, sends and receives block until the other side is ready.
+// This allows goroutines to synchronize without explicit locks or condition variables.
+// The example code sums the numbers in a slice, distributing the work between two goroutines.
+// Once both goroutines have completed their computation, it calculates the final result.
 
 func send(c chan int) {
 	for i := 0; i < 5; i++ {
@@ -53,3 +46,27 @@ func main() {
 	time.Sleep(100 * time.Millisecond)
 	fmt.Println("end")
 }
+
+/////////
+//package main
+//
+//import "fmt"
+//
+//func sum(s []int, c chan int) {
+//	sum := 0
+//	for _, v := range s {
+//		sum += v
+//	}
+//	c <- sum // send sum to c
+//}
+//
+//func main() {
+//	s := []int{7, 2, 8, -9, 4, 0}
+//
+//	c := make(chan int)
+//	go sum(s[:len(s)/2], c)
+//	go sum(s[len(s)/2:], c)
+//	x, y := <-c, <-c // receive from c
+//
+//	fmt.Println(x, y, x+y)
+//}

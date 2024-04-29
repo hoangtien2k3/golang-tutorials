@@ -7,7 +7,9 @@ import (
 )
 
 // Goroutines: A goroutine is a lightweight thread managed by the Go runtime.
-// Ex: go f(x, y, z)
+// go f(x, y, z)
+// starts a new goroutine running
+// go f(x, y, z)
 
 var wg = sync.WaitGroup{}
 
@@ -33,3 +35,23 @@ func fun2() {
 	}
 	wg.Done()
 }
+
+////
+//package main
+//
+//import (
+//"fmt"
+//"time"
+//)
+//
+//func say(s string) {
+//	for i := 0; i < 5; i++ {
+//		time.Sleep(100 * time.Millisecond)
+//		fmt.Println(s)
+//	}
+//}
+//
+//func main() {
+//	go say("world")
+//	say("hello")
+//}

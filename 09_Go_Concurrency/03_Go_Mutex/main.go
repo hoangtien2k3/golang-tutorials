@@ -24,6 +24,7 @@ func increment(s string) {
 	wait.Done()
 
 }
+
 func main() {
 	wait.Add(2)
 	go increment("foo: ")
